@@ -1,0 +1,20 @@
+{
+  "name": "google_feud",
+  "version": "1.0.0",
+  "description": "A game where Family Feud and Google search collide.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mattCarnovale/google_feud.git"
+  },
+  "author": "Matt Carnovale",
+  "license": "GPL-3.0",
+  "bugs": {
+    "url": "https://github.com/mattCarnovale/google_feud/issues"
+  },
+  "homepage": "https://github.com/mattCarnovale/google_feud#readme",
+  "dependencies": {}
+}
