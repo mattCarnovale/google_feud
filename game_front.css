@@ -1,0 +1,176 @@
+@import url('https://fonts.googleapis.com/css?family=Montserrat');
+@import url('https://fonts.googleapis.com/css?family=Saira+Extra+Condensed');
+
+/*Base Structure*/
+html,
+body {
+  height: 100%;
+}
+body {
+  text-align: center;
+  /*background-color: #fdf0cc;*/
+}
+.page-wrapper {
+  display: table;
+  width: 100%;
+  height: 100%; /* For at least Firefox */
+  min-height: 100%;
+}
+.page-wrapper-inner {
+  display: table-cell;
+  vertical-align: top;
+}
+.cover-container {
+  margin-right: auto;
+  margin-left: auto;
+}
+.game-area{
+  font-family: 'Saira Extra Condensed', sans-serif;
+}
+
+/*Logo Styles*/
+.logo{
+  position: relative;
+  width: 500px;
+  height: 175px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  margin-right: auto;
+  margin-left: auto;
+
+}
+.logo span{
+  font-family: 'Montserrat', sans-serif;
+  font-size: 75px;
+}
+.logo #feud{
+  position: relative;
+  bottom: 39px;
+}
+.logo #blue{
+  color: #4385F5;
+}
+.logo #red{
+  color: #DC4437;
+}
+.logo #gold{
+  color: #F5B401;
+}
+.logo #green{
+  color: #109D59;
+}
+
+/*Statistics Style*/
+
+.statistics{
+  height: 112px;
+  margin-top: 20px;
+  margin-bottom: 10px;
+  margin-right: auto;
+  margin-left: auto;
+  line-height: 28px;
+  font-size: 28px;
+}
+
+.round-number-space, .guess-number-space{
+  display: inline-block;
+  width: 70px;
+}
+
+.score-space{
+  display: inline-block;
+  width: 300px;
+  height: 112px;
+}
+.score-space label{
+  line-height: 30px;
+  font-size: 40px;
+}
+.score-box{
+  position: relative;
+  width: 250px;
+  height: 75px;
+  margin-right: auto;
+  margin-left: auto;
+  border-radius: 6px;
+  background-color: #33CC99;
+}
+.score-space #score{
+  display: inline-block;
+  width:250px;
+  margin-right: auto;
+  margin-left: auto;
+  line-height: 75px;
+  font-size: 60px;
+  color: #FFFFFF;
+}
+
+/*Survey Board Styles*/
+
+.survey-board{
+  position: relative;
+  width: 600px;
+  height: 210px;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+#survey-board-left, #survey-board-right{
+  width: 300px;
+  margin-right: auto;
+  margin-left: auto;
+  float: left;
+  clear: right;
+  font-size: 28px;
+  background-color: #cfd6f9;
+}
+.survey-board td{
+  height: 52px;
+  border-style: solid;
+  border-top-width: 2px;
+  border-bottom-width: 2px;
+  border-color: #FFFFFF;
+}
+
+#survey-board-left td{
+  border-left-width: 2px;
+  border-right-width: 1px;
+}
+#survey-board-right td{
+  border-left-width: 1px;
+  border-right-width: 2px;
+}
+
+.survey-board td #num-background-oval{
+  height: 40px;
+  width:50px;
+  margin-right: auto;
+  margin-left: auto;
+  border-radius: 50%;
+  line-height: 40px;
+  color: #FFFFFF;
+  background-color: #4385F5;
+}
+
+/*Search Bar Styles*/
+
+.search-space{
+  margin-top: 35px;
+  margin-bottom: 35px;
+}
+
+#search-bar{
+  height: 35px;
+  width: 340px;
+  padding: 10px;
+  border: 1px solid rgba(136, 136, 136, 0.25);
+  border-radius: 2px;
+  box-shadow: 0px 1px 2px 0px rgba(120, 120, 120, 0.85);
+  font-family: 'Montserrat', sans-serif;
+  font-size: 13px;
+}
+
+#search-bar:hover, #search-bar:focus{
+  outline: none;
+  box-shadow: 1px 0px 1px 1px rgba(136, 136, 136, 0.20), 0px 2px 3px 2px rgba(136, 136, 136, 0.50);
+}
