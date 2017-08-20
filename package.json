@@ -16,5 +16,9 @@
     "url": "https://github.com/mattCarnovale/google_feud/issues"
   },
   "homepage": "https://github.com/mattCarnovale/google_feud#readme",
-  "dependencies": {}
+  "dependencies": {
+    "express": "^4.15.4",
+    "socket.io": "^2.0.3",
+    "suggestion": "^2.1.2"
+  }
 }
