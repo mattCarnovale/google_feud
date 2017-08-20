@@ -141,7 +141,7 @@ body {
   border-right-width: 2px;
 }
 
-.survey-board td #num-background-oval{
+.survey-board td .num-background-oval{
   height: 40px;
   width:50px;
   margin-right: auto;
@@ -150,6 +150,25 @@ body {
   line-height: 40px;
   color: #FFFFFF;
   background-color: #4385F5;
+}
+
+.survey-board td .answer-with-score{
+  height: 100%;
+  width:100%;
+  margin-right: auto;
+  margin-left: auto;
+  line-height: 50px;
+  color: #FFFFFF;
+  background-color: #707070;
+}
+
+.answer-with-score .answer{
+  margin-left: 15px;
+  float: left;
+}
+.answer-with-score .value{
+  margin-right: 10px;
+  float: right;
 }
 
 /*Search Bar Styles*/
