@@ -8,7 +8,7 @@ body {
 }
 body {
   text-align: center;
-  /*background-color: #fdf0cc;*/
+  font-family: 'Montserrat', sans-serif;
 }
 .page-wrapper {
   display: table;
@@ -24,9 +24,6 @@ body {
   margin-right: auto;
   margin-left: auto;
 }
-.game-area{
-  font-family: 'Saira Extra Condensed', sans-serif;
-}
 
 /*Logo Styles*/
 .logo{
@@ -40,7 +37,6 @@ body {
 
 }
 .logo span{
-  font-family: 'Montserrat', sans-serif;
   font-size: 75px;
 }
 .logo #feud{
@@ -70,9 +66,10 @@ body {
   margin-left: auto;
   line-height: 28px;
   font-size: 28px;
+  font-family: 'Saira Extra Condensed', sans-serif;
 }
 
-.round-number-space, .guess-number-space{
+.round-number-space, .wrong-number-space{
   display: inline-block;
   width: 70px;
 }
@@ -113,6 +110,7 @@ body {
   height: 210px;
   margin-right: auto;
   margin-left: auto;
+  font-family: 'Saira Extra Condensed', sans-serif;
 }
 
 #survey-board-left, #survey-board-right{
@@ -185,11 +183,47 @@ body {
   border: 1px solid rgba(136, 136, 136, 0.25);
   border-radius: 2px;
   box-shadow: 0px 1px 2px 0px rgba(120, 120, 120, 0.85);
-  font-family: 'Montserrat', sans-serif;
   font-size: 13px;
 }
 
 #user-input:hover, #user-input:focus{
   outline: none;
   box-shadow: 1px 0px 1px 1px rgba(136, 136, 136, 0.20), 0px 2px 3px 2px rgba(136, 136, 136, 0.50);
+}
+
+/*Wrong Answer X Styles*/
+.wrong-answer-popup-space{
+  height: 225px;
+  width: 100%;
+  position: absolute;
+  z-index: 1;
+  display: block;
+  top: 328px;
+  margin-right: auto;
+  margin-left: auto;
+  visibility: hidden;
+}
+
+.wrong{
+  height: 225px;
+  display: inline-block;
+  border: 25px solid #ff4d4d;
+  color: #ff4d4d;
+  font-size: 290px;
+  line-height: 180px;
+  visibility: hidden;
+}
+
+/*Button Style*/
+.button-space{
+  padding-top: 20px;
+}
+.btn-danger{
+  background-color: #DC4437;
+  border-color: #DC4437;
+}
+
+.btn-success{
+  background-color:#33CC99;
+  border-color: #33CC99;
 }
