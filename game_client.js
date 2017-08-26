@@ -1,4 +1,5 @@
 var strAnswerArray = [];
+var strUsedPhraseArray = [];
 var intRoundNumber = 1;
 var intValue = 0;
 var intScore = 0;
@@ -17,27 +18,29 @@ jQuery('document').ready(function(){
       if(event.which === 13){
                                   // Handle Phrase submission
         if(jQuery(this).hasClass('user-search')){
-          getAnswers();
-          switchSearchToAnswer();
+          var strUserRequest = jQuery('.user-search').val();
+          strUserRequest = strUserRequest.trim();
+          console.log(strUserRequest);
+          if(isRepeatedPhrase(strUserRequest)){
+            handleRepeatedRequest();
+          }else{
+            getAnswers(strUserRequest);
+            strUsedPhraseArray.push(strUserRequest)
+            console.log(strUsedPhraseArray);
+          }
         } else{                   //Handle User answers
           var objAnswerResult = checkUserAnswer();
           if(objAnswerResult.isCorrect){
-            clearAnswer();
-            revealAnswer(objAnswerResult.index);
-            intScore += intValue;
-            ++intCorrectCount;
-            updateScore();
+            handleCorrectAnswer(objAnswerResult.index);
             if(intCorrectCount === 8){
               completeRound();
               ++intRoundNumber;
             }
           }else{
-            clearAnswer();
-            popupWrongAnswerX();
-            ++intWrongCount;
-            updateWrongGuesses();
+            handleWrongAnswer();
             if(intWrongCount === 3){
               gameOver();
+              revealAllAnswers();
             }
           }
         }
@@ -55,6 +58,18 @@ jQuery('document').ready(function(){
 });
 
 /*DOM manipulation*/
+
+var handleRepeatedRequest = function(){
+  jQuery('.user-search')
+    .attr('placeholder', 'nice try, pal! try another word or phrase...')
+    .val('');
+}
+
+var handleTooFewResults = function(){
+  jQuery('.user-search')
+    .attr('placeholder', 'too few results! try another word or phrase...')
+    .val('');
+}
 
 var switchSearchToAnswer = function(){
  jQuery('.user-search')
@@ -75,14 +90,12 @@ var clearAnswer = function(){
   jQuery('.user-answer').val('');
 }
 
-var revealAnswer = function(intIndex){
-  var strCardAnswered = '.card-cover'.concat(intIndex)
-  assignValue(intIndex);
-  jQuery(strCardAnswered + ' > div')
-    .toggleClass('num-background-oval answer-with-score')
-    .empty()
-    .append('<span class=\'answer\'>' + strAnswerArray[i] + '</span')
-    .append('<span class=\'value\'>' + intValue +'</span');
+var revealAnswer = function(strCardAnswered){
+    jQuery(strCardAnswered + ' > div')
+      .toggleClass('num-background-oval answer-with-score')
+      .empty()
+      .append('<span class=\'answer\'>' + strAnswerArray[i] + '</span')
+      .append('<span class=\'value\'>' + intValue +'</span');
 }
 
 var updateScore = function (){
@@ -162,30 +175,66 @@ var switchToResetButton = function(){
 
 /*Ajax work*/
 
-var getAnswers = function(){
-  var strUserRequest = jQuery('.user-search').val();
-  console.log(strUserRequest);
+var getAnswers = function(strUserRequest){
   jQuery.ajax({
     'type': 'GET',
     'url': '/phrase?strUserRequest=' + encodeURIComponent(strUserRequest),
     'dataType': 'json',
     'success': function(strSuggestionArray){
-      formatAnswerArray(strSuggestionArray, strUserRequest);
+      //9 because sometimes the first result is the word/phrase itself
+      if(strSuggestionArray.length >= 9){
+        formatAnswerArray(strSuggestionArray, strUserRequest);
+        switchSearchToAnswer();
+      }else{
+        handleTooFewResults();
+      }
     }
   });
 }
 
 /*Helper Functions*/
 
+var revealAllAnswers = function(){
+  for(i=0; i < 8; ++i){
+    var strCardAnswered = '.card-cover'.concat(i);
+    if(jQuery(strCardAnswered + '>div').hasClass('num-background-oval')){
+      assignValue(i);
+      revealAnswer(strCardAnswered);
+    }
+  }
+}
+
 var continueToNextRound = function(){
+  strAnswerArray = [];
   intCorrectCount = 0;
   intWrongCount = 0;
   intValue = 0;
   updateRound();
   updateWrongGuesses();
+  hideWrongAnswerElements();
   resetSurveyBoard();
   switchAnswerToSearch();
   switchToResetButton();
+}
+
+var handleCorrectAnswer = function (intIndex) {
+  clearAnswer();
+  var strCardAnswered = '.card-cover'.concat(intIndex);
+  if(jQuery(strCardAnswered + '>div').hasClass('num-background-oval')){
+    assignValue(intIndex);
+    revealAnswer(strCardAnswered);
+    intScore += intValue;
+    ++intCorrectCount;
+    updateScore();
+  }
+  intValue = 0;
+}
+
+var handleWrongAnswer = function() {
+  clearAnswer();
+  popupWrongAnswerX();
+  ++intWrongCount;
+  updateWrongGuesses();
 }
 
 //The value of the answers increases with each successful round
@@ -219,9 +268,10 @@ var assignValue = function (intIndex){
 
 var checkUserAnswer = function () {
   var strUserAnswer = jQuery('.user-answer').val();
+  strUserAnswer = strUserAnswer.trim().toLowerCase();
   console.log(strUserAnswer);
   for(i = 0; i < 8; ++i){
-    if(strUserAnswer.toLowerCase() === strAnswerArray[i]){
+    if(strUserAnswer === strAnswerArray[i]){
       return {
         'isCorrect': true,
         'index': i
@@ -231,6 +281,15 @@ var checkUserAnswer = function () {
   return{
     'isCorrect': false
   };
+}
+
+var isRepeatedPhrase = function(strUserRequest){
+  for(i = 0; i < strUsedPhraseArray.length; ++i){
+    if(strUsedPhraseArray[i] === strUserRequest){
+      return true;
+    }
+  }
+  return false;
 }
 
 var formatAnswerArray = function(strSuggestionArray, strUserRequest){
