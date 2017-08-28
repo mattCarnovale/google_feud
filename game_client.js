@@ -19,7 +19,7 @@ jQuery('document').ready(function(){
                                   // Handle Phrase submission
         if(jQuery(this).hasClass('user-search')){
           var strUserRequest = jQuery('.user-search').val();
-          strUserRequest = strUserRequest.trim();
+          strUserRequest = strUserRequest.trim().toLowerCase();
           if(isRepeatedPhrase(strUserRequest)){
             handleRepeatedRequest();
           }else{
