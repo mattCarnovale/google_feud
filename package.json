@@ -11,14 +11,13 @@
     "url": "git+https://github.com/mattCarnovale/google_feud.git"
   },
   "author": "Matt Carnovale",
-  "license": "GPL-3.0",
+  "license": "GNU General Public License v3.0",
   "bugs": {
     "url": "https://github.com/mattCarnovale/google_feud/issues"
   },
   "homepage": "https://github.com/mattCarnovale/google_feud#readme",
   "dependencies": {
     "express": "^4.15.4",
-    "socket.io": "^2.0.3",
     "suggestion": "^2.1.2"
   }
 }
