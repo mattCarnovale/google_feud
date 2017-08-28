@@ -12,7 +12,6 @@ server.listen(process.env.PORT || 8080);
 
 server.get('/phrase', function(request, response){
   var strUserPhraseToSearch = request.query.strUserRequest;
-  console.log(strUserPhraseToSearch);
   var strSuggestionArray;
   googleSuggest(strUserPhraseToSearch, function(error, strSuggestionArray){
     if(error) throw error;

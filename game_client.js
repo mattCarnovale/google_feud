@@ -20,13 +20,11 @@ jQuery('document').ready(function(){
         if(jQuery(this).hasClass('user-search')){
           var strUserRequest = jQuery('.user-search').val();
           strUserRequest = strUserRequest.trim();
-          console.log(strUserRequest);
           if(isRepeatedPhrase(strUserRequest)){
             handleRepeatedRequest();
           }else{
             getAnswers(strUserRequest);
             strUsedPhraseArray.push(strUserRequest)
-            console.log(strUsedPhraseArray);
           }
         } else{                   //Handle User answers
           var objAnswerResult = checkUserAnswer();
@@ -269,7 +267,6 @@ var assignValue = function (intIndex){
 var checkUserAnswer = function () {
   var strUserAnswer = jQuery('.user-answer').val();
   strUserAnswer = strUserAnswer.trim().toLowerCase();
-  console.log(strUserAnswer);
   for(i = 0; i < 8; ++i){
     if(strUserAnswer === strAnswerArray[i]){
       return {
