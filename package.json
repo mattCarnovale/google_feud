@@ -11,7 +11,7 @@
     "url": "git+https://github.com/mattCarnovale/google_feud.git"
   },
   "author": "Matt Carnovale",
-  "license": "AGPL-3.0",
+  "license": "GPL-3.0",
   "bugs": {
     "url": "https://github.com/mattCarnovale/google_feud/issues"
   },
