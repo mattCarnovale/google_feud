@@ -15,7 +15,7 @@ Google Survey Says is a game that plays like Family Feud, but the survey respons
 
 ### Prerequistes
 
-Install **Node.js** by following<a href="https://nodejs.org/en/>these instructions</a>.
+Install **Node.js** by following <a href="https://nodejs.org/en/">these instructions</a>.
 
 Follow <a href="https://www.npmjs.com/get-npm">these instructions</a> to install **npm**.
 
